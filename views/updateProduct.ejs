@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Update product</h1>
+    <div>
+        <a href="/">Home</a>
+        <a href="/dealers">Dealer</a>
+        <a href="/products">Product</a>
+    </div>
+    <div>
+        <form method="POST" action="/products/update/<%= product.id %>">
+            <label>Name</label>
+            <input type="text" name="name" value="<%= product.name %>"><br>
+            <label>Stock</label>
+            <input type="number" name="stock" value="<%= product.stock %>"><br>
+            <label>Dealer</label>
+            <select name="DealerId">
+                <% dealers.forEach(val => { %>
+                    <% if (product.Dealer.id === dealers.id) { %>
+                        <option value="<%= val.id %>" selected><%= val.name %></option>
+                    <% } else { %>
+                        <option value="<%= val.id %>"><%= val.name %></option>
+                    <% } %>
+                <% }) %>                 
+            </select><br>
+            <input type="submit" value="submit" name="submit">
+        </form>
+    </div>
+</body>
+
+</html>
